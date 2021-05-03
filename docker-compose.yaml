@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+    flask:
+        build: .
+        ports:
+            - "8081:8081"
+        volumes:
+            - ./app:/usr/src/app/
+        environment:
+            - PORT=8081
+        depends_on:
+            - redis
+    redis:
+        image: redis:alpine
+        ports:
+            - "6379:6379"
